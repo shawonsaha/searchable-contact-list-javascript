@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.99.0/css/materialize.css">
+  <title>My Contacts</title>
+</head>
+<body>
+  <div class="container">
+    <h1 class="center-align">
+      My Contacts
+    </h1>
+    <input type="text" id="filterInput" placeholder="Search names...">
+    <ul id="names" class="collection with-header">
+      <li class="collection-header">
+        <h5>A</h5>
+      </li>
+      <li class="collection-item">
+        <a href="#">Abe</a>
+      </li>
+      <li class="collection-item">
+        <a href="#">Adam</a>
+      </li>
+      <li class="collection-item">
+        <a href="#">Alan</a>
+      </li>
+      <li class="collection-item">
+        <a href="#">Anna</a>
+      </li>
+      <li class="collection-header">
+        <h5>B</h5>
+      </li>
+      <li class="collection-item">
+        <a href="#">Beth</a>
+      </li>
+      <li class="collection-item">
+        <a href="#">Bill</a>
+      </li>
+      <li class="collection-item">
+        <a href="#">Bob</a>
+      </li>
+      <li class="collection-item">
+        <a href="#">Brad</a>
+      </li>
+      <li class="collection-header">
+        <h5>C</h5>
+      </li>
+      <li class="collection-item">
+        <a href="#">Carrie</a>
+      </li>
+      <li class="collection-item">
+        <a href="#">Cathy</a>
+      </li>
+      <li class="collection-item">
+        <a href="#">Courtney</a>
+      </li>
+    </ul>
+  </div>
+
+  <script>
+      //selecting the search box and listen for anything typed in 
+      document.getElementById('filterInput').addEventListener('keyup', filterNames)
+      //this func will trigger if anything typed in in the search box
+      function filterNames(e){
+          //storing the keystrokes and convert them into lowercase
+          let searchFor = e.target.value.toLowerCase()
+          //selecting ul
+          const ul = document.getElementById('names')
+          //storing all list item inside ul as HTMLcollection
+          const li = ul.querySelectorAll('li.collection-item')
+          //iterating each li element
+          for(let i = 0; i < li.length; i++){
+              //selecting the text inside li element and convert into lowercase
+              //then storing 1 by 1 inside allNames as array
+              let allNames = li[i].innerText.toLowerCase()
+              //if search item matches with list items
+              if(allNames.indexOf(searchFor) != -1){
+                  //show it in html
+                  li[i].style.display = 'block';
+              } else {
+                  //otherwise hide
+                  li[i].style.display = 'none';
+              }
+          }
+      }
+  </script>
+</body>
+</html>
